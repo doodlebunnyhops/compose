@@ -162,3 +162,41 @@ Something of __interest__ the user should be careful about
 {{< tip "warning" >}}
 Something of **interest** the user should be careful about
 {{< /tip >}}
+
+
+### Embeded Content
+
+**Setup**
+
+Add your folder you would like to reference content from in `config/_default/params.toml`. For this example and setup in this site we will use the directory `embed`. Make sure directory `embed` is under folder `content`
+
+```toml
+docSections = ["embed","docs"]
+```
+
+**Create content that can be embeded**
+
+Inside the `embed` directory, create a `embed-example.md` file. It's important to note here, this file does not require a Front Matter.
+I have found at least including a few `#` seems to assist in rendering the embed-example.md file when it contains shortcodes in it.
+
+Example `content/embed/embed-example.md`:
+
+```markdown
+####
+
+This came from an embeded file.
+```
+
+**Use shortcode to embed content**
+
+Use this shortcode to embed content into another markdown file:
+
+```markdown
+{{%/* content "../../embed/embed-example.md" */%}}
+```
+
+and to see the result:
+
+{{% content "embed/embed-example.md" %}}
+
+
